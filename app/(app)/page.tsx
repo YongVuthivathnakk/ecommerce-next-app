@@ -1,4 +1,8 @@
+import { CategoryTiles } from "@/components/CategoryTiles";
+import { CategoryTilesSkeleton } from "@/components/CategoryTilesSkeletons";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
+import { FeaturedCarouselSkeleton } from "@/components/FeaturedCarouselSkeleton";
+import { ProductSection } from "@/components/ProductSection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories";
 import {
@@ -83,15 +87,40 @@ export default async function Home({ searchParams }: PageProps) {
   return (
     <div>
       {/* Feature Product Carousel */}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FeaturedCarouselSkeleton />}>
         <FeaturedCarousel products={featuredProducts}></FeaturedCarousel>
       </Suspense>
 
       {/* Page Banner */}
+      <div className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+            Shop {categorySlug ? categorySlug : "All Products"}
+          </h1>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Premium furniture for your home
+          </p>
+        </div>
 
-      {/* Category Tiles */}
+        {/* Category Tiles - Full width */}
+        <div className="mt-6">
+          <Suspense fallback={<CategoryTilesSkeleton />}>
+            <CategoryTiles
+              categories={categories}
+              activeCategory={categorySlug || undefined}
+            />
+          </Suspense>
+        </div>
+      </div>
 
       {/* Product Section */}
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <ProductSection
+          categories={categories}
+          products={products}
+          searchQuery={searchQuery}
+        />
+      </div>
     </div>
   );
 }
