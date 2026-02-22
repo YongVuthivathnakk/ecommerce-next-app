@@ -1,8 +1,9 @@
-import { CategoryTiles } from "@/components/CategoryTiles";
-import { CategoryTilesSkeleton } from "@/components/CategoryTilesSkeletons";
-import { FeaturedCarousel } from "@/components/FeaturedCarousel";
-import { FeaturedCarouselSkeleton } from "@/components/FeaturedCarouselSkeleton";
-import { ProductSection } from "@/components/ProductSection";
+import { CategoryTiles } from "@/components/app/LandingPage/CategoryTiles";
+import { CategoryTilesSkeleton } from "@/components/app/LandingPage/CategoryTilesSkeletons";
+import { FeaturedCarousel } from "@/components/app/LandingPage/FeaturedCarousel";
+import { FeaturedCarouselSkeleton } from "@/components/app/LandingPage/FeaturedCarouselSkeleton";
+import { Header } from "@/components/app/LandingPage/Header";
+import { ProductSection } from "@/components/app/LandingPage/ProductSection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories";
 import {
@@ -86,6 +87,7 @@ export default async function Home({ searchParams }: PageProps) {
 
   return (
     <div>
+      <Header />
       {/* Feature Product Carousel */}
       <Suspense fallback={<FeaturedCarouselSkeleton />}>
         <FeaturedCarousel products={featuredProducts}></FeaturedCarousel>
@@ -93,7 +95,7 @@ export default async function Home({ searchParams }: PageProps) {
 
       {/* Page Banner */}
       <div className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-        <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max- px-4 pt-8 sm:px-8 lg:px-16">
           <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
             Shop {categorySlug ? categorySlug : "All Products"}
           </h1>
@@ -114,7 +116,7 @@ export default async function Home({ searchParams }: PageProps) {
       </div>
 
       {/* Product Section */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto  px-4 py-8 sm:px-6 lg:px-8">
         <ProductSection
           categories={categories}
           products={products}

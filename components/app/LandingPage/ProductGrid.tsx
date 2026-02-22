@@ -1,5 +1,5 @@
 import { FILTER_PRODUCTS_BY_NAME_QUERYResult } from "@/sanity.types";
-import { EmptyState } from "./ui/empty-state";
+import { EmptyState } from "../../ui/empty-state";
 import { PackageSearch } from "lucide-react";
 import { ProductCard } from "./ProductCard";
 

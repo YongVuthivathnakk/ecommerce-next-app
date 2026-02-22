@@ -8,13 +8,13 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
+} from "../../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Badge } from "../../ui/badge";
+import { Button } from "../../ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn, formatPrice } from "@/lib/utils";
@@ -135,7 +135,7 @@ function FeaturedSlide({ product }: FeaturedSlideProps) {
         {product.category && (
           <Badge
             variant="secondary"
-            className="mb-4 w-fit bg-amber-500/20 text-amber-400 hover:bg-amber-500/30"
+            className="mb-4 w-fit bg-green-500/20 text-green-400 hover:bg-green-500/30"
           >
             {product.category.title}
           </Badge>

@@ -21,7 +21,7 @@ export function CategoryTiles({
           href="/"
           className={`group relative flex-shrink-0 overflow-hidden rounded-xl transition-all duration-300 ${
             !activeCategory
-              ? "ring-2 ring-amber-500 ring-offset-2 dark:ring-offset-zinc-900"
+              ? "ring-2 ring-green-500 ring-offset-2 dark:ring-offset-zinc-900"
               : "hover:ring-2 hover:ring-zinc-300 hover:ring-offset-2 dark:hover:ring-zinc-600 dark:hover:ring-offset-zinc-900"
           }`}
         >
@@ -55,7 +55,7 @@ export function CategoryTiles({
               href={`/?category=${category.slug}`}
               className={`group relative flex-shrink-0 overflow-hidden rounded-xl transition-all duration-300 ${
                 isActive
-                  ? "ring-2 ring-amber-500 ring-offset-2 dark:ring-offset-zinc-900"
+                  ? "ring-2 ring-green-500 ring-offset-2 dark:ring-offset-zinc-900"
                   : "hover:ring-2 hover:ring-zinc-300 hover:ring-offset-2 dark:hover:ring-zinc-600 dark:hover:ring-offset-zinc-900"
               }`}
             >
@@ -69,7 +69,7 @@ export function CategoryTiles({
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-600" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-600" />
                 )}
 
                 {/* Dark overlay for text readability */}
@@ -86,8 +86,8 @@ export function CategoryTiles({
                 {isActive && (
                   <div className="absolute top-2 right-2">
                     <span className="flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                     </span>
                   </div>
                 )}

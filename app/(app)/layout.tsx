@@ -1,6 +1,7 @@
 import { CartStoreProvider } from "@/lib/store/cart-store-provider";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +9,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <CartStoreProvider>
         <main>{children}</main>
         <SanityLive />
+        <Toaster />
       </CartStoreProvider>
     </ClerkProvider>
   );

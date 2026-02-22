@@ -46,11 +46,7 @@ export function AddToCartButton({
   // Out of stock
   if (isOutOfStock) {
     return (
-      <Button
-        disabled
-        variant="secondary"
-        className={cn("h-11 w-full", className)}
-      >
+      <Button disabled variant="secondary" className="h-11 w-full">
         Out of Stock
       </Button>
     );
@@ -68,12 +64,7 @@ export function AddToCartButton({
 
   // In cart - show quantity controls
   return (
-    <div
-      className={cn(
-        "flex h-11 w-full items-center rounded-md border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900",
-        className,
-      )}
-    >
+    <div className="flex h-11 w-full items-center rounded-md border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
       <Button
         variant="ghost"
         size="icon"

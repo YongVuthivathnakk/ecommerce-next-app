@@ -2,13 +2,13 @@
 
 import { FILTER_PRODUCTS_BY_NAME_QUERYResult } from "@/sanity.types";
 import { useState } from "react";
-import { Card, CardContent, CardFooter } from "./ui/card";
+import { Card, CardContent, CardFooter } from "../../ui/card";
 import Link from "next/link";
 import { cn, formatPrice } from "@/lib/utils";
 import Image from "next/image";
-import { Badge } from "./ui/badge";
-import { StockBadge } from "./StockBadge";
+import { Badge } from "../../ui/badge";
 import { AddToCartButton } from "./AddToCartButton";
+import { StockBadge } from "./StockBadge";
 
 type Product = FILTER_PRODUCTS_BY_NAME_QUERYResult[number];
 
@@ -125,18 +125,19 @@ export function ProductCard({ product }: ProductCardProps) {
           <p className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
             {formatPrice(product.price)}
           </p>
-          {/* <StockBadge productId={product._id} stock={stock} /> */}
+          <StockBadge productId={product._id} stock={stock} />
         </div>
       </CardContent>
 
       <CardFooter className="mt-auto p-5 pt-0">
-        {/* <AddToCartButton
+        <AddToCartButton
           productId={product._id}
           name={product.name ?? "Unknown Product"}
           price={product.price ?? 0}
           image={mainImageUrl ?? undefined}
           stock={stock}
-        /> */}
+          className="bg-green-800"
+        />
       </CardFooter>
     </Card>
   );

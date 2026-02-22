@@ -68,7 +68,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
             }
             return {
               items: state.items.map((i) =>
-                i.productId !== productId ? { ...i, quantity } : i,
+                i.productId === productId ? { ...i, quantity } : i,
               ),
             };
           }),
