@@ -1,6 +1,7 @@
 import { createStore } from "zustand/vanilla";
 import { persist } from "zustand/middleware";
 
+// Types
 export interface CartItem {
   productId: string;
   name: string;
@@ -16,28 +17,33 @@ export interface CartState {
 
 export interface CartActions {
   addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
-  removeItem: (productId: string, quantity: number) => void;
-  clearCart: () => void;
+  removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
   toggleCart: () => void;
-  closeCart: () => void;
   openCart: () => void;
+  closeCart: () => void;
 }
 
 export type CartStore = CartState & CartActions;
 
-// Default State
-
+// Default state
 export const defaultInitState: CartState = {
   items: [],
   isOpen: false,
 };
 
+/**
+ * Cart store factory - creates new store instance per provider
+ * Uses persist middleware with skipHydration for Next.js SSR compatibility
+ * @see https://zustand.docs.pmnd.rs/guides/nextjs#hydration-and-asynchronous-storages
+ */
 export const createCartStore = (initState: CartState = defaultInitState) => {
   return createStore<CartStore>()(
     persist(
       (set) => ({
         ...initState,
+
         addItem: (item, quantity = 1) =>
           set((state) => {
             const existing = state.items.find(
@@ -54,6 +60,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
             }
             return { items: [...state.items, { ...item, quantity }] };
           }),
+
         removeItem: (productId) =>
           set((state) => ({
             items: state.items.filter((i) => i.productId !== productId),
@@ -72,10 +79,11 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
               ),
             };
           }),
+
         clearCart: () => set({ items: [] }),
         toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
-        closeCart: () => set({ isOpen: false }),
         openCart: () => set({ isOpen: true }),
+        closeCart: () => set({ isOpen: false }),
       }),
       {
         name: "cart-storage",

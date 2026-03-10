@@ -8,6 +8,8 @@ import Link from "next/link";
 
 export const Header = () => {
   const { openCart } = useCartActions();
+  // const { openChat } = useChatActions();
+  // const isChatOpen = useIsChatOpen();
   const totalItems = useTotalItems();
 
   return (

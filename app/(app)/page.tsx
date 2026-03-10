@@ -1,9 +1,8 @@
-import { CategoryTiles } from "@/components/app/LandingPage/CategoryTiles";
-import { CategoryTilesSkeleton } from "@/components/app/LandingPage/CategoryTilesSkeletons";
-import { FeaturedCarousel } from "@/components/app/LandingPage/FeaturedCarousel";
-import { FeaturedCarouselSkeleton } from "@/components/app/LandingPage/FeaturedCarouselSkeleton";
-import { Header } from "@/components/app/LandingPage/Header";
-import { ProductSection } from "@/components/app/LandingPage/ProductSection";
+import { CategoryTiles } from "@/components/app/home/CategoryTiles";
+import { CategoryTilesSkeleton } from "@/components/app/home/CategoryTilesSkeletons";
+import { FeaturedCarousel } from "@/components/app/home/FeaturedCarousel";
+import { FeaturedCarouselSkeleton } from "@/components/app/home/FeaturedCarouselSkeleton";
+import { ProductSection } from "@/components/app/home/ProductSection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories";
 import {
@@ -87,7 +86,6 @@ export default async function Home({ searchParams }: PageProps) {
 
   return (
     <div>
-      <Header />
       {/* Feature Product Carousel */}
       <Suspense fallback={<FeaturedCarouselSkeleton />}>
         <FeaturedCarousel products={featuredProducts}></FeaturedCarousel>
